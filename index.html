@@ -1,194 +1,238 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
+    <title>Course Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeo4DkcfM7HAtDmN9Q3zHnVE5g5CszM2p4JNiZOywwjD8oM" crossorigin="anonymous">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-        .container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        .form-group input[type="file"] {
-            padding: 0;
-        }
-        .form-group img {
-            display: block;
-            margin-top: 10px;
-            max-width: 100px;
-            border-radius: 50%;
-        }
-        .form-group .show-password {
-            cursor: pointer;
-            float: right;
-            margin-top: -25px;
-            margin-right: 10px;
-        }
-        .form-group .error-message {
-            color: red;
-            font-size: 12px;
-        }
-        .btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn:disabled {
-            background-color: #ccc;
-        }
-        .cancel-btn {
-            background-color: #dc3545;
-            margin-top: 10px;
-        }
-        .form-footer {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 12px;
-            color: gray;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h2>Create Account</h2>
-        <form id="createAccountForm">
-            <!-- Username -->
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" maxlength="255" required>
-                <div class="error-message" id="usernameError"></div>
-            </div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Course Management System</h1>
 
-            <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" maxlength="255" required>
-                <span class="show-password" onclick="togglePassword()">Show</span>
-                <div class="error-message" id="passwordError"></div>
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" maxlength="255" required>
-                <div class="error-message" id="emailError"></div>
-            </div>
-
-            <!-- Full Name (Optional) -->
-            <div class="form-group">
-                <label for="fullName">Full Name (Optional)</label>
-                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
-            </div>
-
-            <!-- Role -->
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select id="role" name="role" required>
-                    <option value="">Select your role</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                </select>
-                <div class="error-message" id="roleError"></div>
-            </div>
-
-            <!-- Profile Picture -->
-            <div class="form-group">
-                <label for="profilePicture">Profile Picture</label>
-                <input type="file" id="profilePicture" name="profilePicture" accept="image/*" onchange="previewImage(event)">
-                <img id="profilePreview" src="" alt="Profile Picture Preview" style="display: none;">
-            </div>
-
-            <!-- Account Created At (Read-only) -->
-            <div class="form-group">
-                <label>Account Created At</label>
-                <input type="text" value="2024-09-28" readonly>
-            </div>
-
-            <!-- Last Updated At (Read-only) -->
-            <div class="form-group">
-                <label>Last Updated At</label>
-                <input type="text" value="2024-09-28" readonly>
-            </div>
-
-            <!-- Buttons -->
-            <button type="submit" class="btn" id="submitButton" disabled>Create Account</button>
-            <button type="button" class="btn cancel-btn">Cancel</button>
-        </form>
-        <div class="form-footer">
-            Ensure all fields are properly filled out before submitting.
+        <!-- Course List Page -->
+        <div id="courseList">
+            <h2>Courses</h2>
+            <button class="btn btn-primary mb-3" onclick="showCreateForm()">Create New Course</button>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Instructor</th>
+                        <th>Created At</th>
+                        <th>Last Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="courseTable">
+                    <!-- Courses will be dynamically inserted here -->
+                </tbody>
+            </table>
         </div>
+
+        <!-- Create Course Page -->
+        <div id="createCourseForm" class="hidden">
+            <h2>Create New Course</h2>
+            <form onsubmit="createCourse(event)">
+                <div class="mb-3">
+                    <label for="courseName" class="form-label">Course Name*</label>
+                    <input type="text" class="form-control" id="courseName" maxlength="255" required>
+                </div>
+                <div class="mb-3">
+                    <label for="courseDescription" class="form-label">Course Description (optional)</label>
+                    <textarea class="form-control" id="courseDescription"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="courseInstructor" class="form-label">Instructor*</label>
+                    <select class="form-select" id="courseInstructor" required>
+                        <option value="" disabled selected>Select an instructor</option>
+                        <option value="Instructor 1">Instructor 1</option>
+                        <option value="Instructor 2">Instructor 2</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">Create Course</button>
+                <button type="button" class="btn btn-secondary" onclick="showCourseList()">Cancel</button>
+            </form>
+        </div>
+
+        <!-- View Course Page -->
+        <div id="viewCoursePage" class="hidden">
+            <h2>View Course</h2>
+            <p><strong>Course ID:</strong> <span id="viewCourseID"></span></p>
+            <p><strong>Course Name:</strong> <span id="viewCourseName"></span></p>
+            <p><strong>Course Description:</strong> <span id="viewCourseDescription"></span></p>
+            <p><strong>Instructor:</strong> <span id="viewCourseInstructor"></span></p>
+            <p><strong>Created At:</strong> <span id="viewCreatedAt"></span></p>
+            <p><strong>Last Updated:</strong> <span id="viewLastUpdated"></span></p>
+            <button class="btn btn-primary" onclick="showEditForm()">Edit Course</button>
+            <button class="btn btn-danger" onclick="deleteCourse()">Delete Course</button>
+            <button class="btn btn-secondary" onclick="showCourseList()">Back</button>
+        </div>
+
+        <!-- Edit Course Page -->
+        <div id="editCourseForm" class="hidden">
+            <h2>Edit Course</h2>
+            <form onsubmit="updateCourse(event)">
+                <p><strong>Course ID:</strong> <span id="editCourseID"></span></p>
+                <div class="mb-3">
+                    <label for="editCourseName" class="form-label">Course Name*</label>
+                    <input type="text" class="form-control" id="editCourseName" maxlength="255" required>
+                </div>
+                <div class="mb-3">
+                    <label for="editCourseDescription" class="form-label">Course Description (optional)</label>
+                    <textarea class="form-control" id="editCourseDescription"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="editCourseInstructor" class="form-label">Instructor*</label>
+                    <select class="form-select" id="editCourseInstructor" required>
+                        <option value="Instructor 1">Instructor 1</option>
+                        <option value="Instructor 2">Instructor 2</option>
+                    </select>
+                </div>
+                <p><strong>Created At:</strong> <span id="editCreatedAt"></span></p>
+                <p><strong>Last Updated:</strong> <span id="editLastUpdated"></span></p>
+                <button type="submit" class="btn btn-success">Update Course</button>
+                <button type="button" class="btn btn-secondary" onclick="showCourseList()">Cancel</button>
+            </form>
+        </div>
+
     </div>
+
     <script>
-        
-        function togglePassword() {
-            const passwordField = document.getElementById("password");
-            const showPassword = document.querySelector(".show-password");
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                showPassword.textContent = "Hide";
-            } else {
-                passwordField.type = "password";
-                showPassword.textContent = "Show";
+        let courses = [
+            {
+                id: 1,
+                name: 'Introduction to Programming',
+                description: 'Learn the basics of programming.',
+                instructor: 'Instructor 1',
+                created_at: '2023-01-01',
+                updated_at: '2023-01-05'
+            },
+            {
+                id: 2,
+                name: 'Advanced Mathematics',
+                description: 'Dive deep into calculus and algebra.',
+                instructor: 'Instructor 2',
+                created_at: '2023-01-10',
+                updated_at: '2023-01-12'
+            }
+        ];
+
+        let currentCourse = null;
+
+        // Show course list
+        function showCourseList() {
+            document.getElementById('courseList').classList.remove('hidden');
+            document.getElementById('createCourseForm').classList.add('hidden');
+            document.getElementById('viewCoursePage').classList.add('hidden');
+            document.getElementById('editCourseForm').classList.add('hidden');
+            renderCourseTable();
+        }
+
+        // Show create course form
+        function showCreateForm() {
+            document.getElementById('courseList').classList.add('hidden');
+            document.getElementById('createCourseForm').classList.remove('hidden');
+        }
+
+        // Show view course page
+        function viewCourse(id) {
+            currentCourse = courses.find(course => course.id === id);
+            document.getElementById('viewCourseID').innerText = currentCourse.id;
+            document.getElementById('viewCourseName').innerText = currentCourse.name;
+            document.getElementById('viewCourseDescription').innerText = currentCourse.description;
+            document.getElementById('viewCourseInstructor').innerText = currentCourse.instructor;
+            document.getElementById('viewCreatedAt').innerText = currentCourse.created_at;
+            document.getElementById('viewLastUpdated').innerText = currentCourse.updated_at;
+
+            document.getElementById('courseList').classList.add('hidden');
+            document.getElementById('viewCoursePage').classList.remove('hidden');
+        }
+
+        // Show edit course form
+        function showEditForm() {
+            document.getElementById('editCourseID').innerText = currentCourse.id;
+            document.getElementById('editCourseName').value = currentCourse.name;
+            document.getElementById('editCourseDescription').value = currentCourse.description;
+            document.getElementById('editCourseInstructor').value = currentCourse.instructor;
+            document.getElementById('editCreatedAt').innerText = currentCourse.created_at;
+            document.getElementById('editLastUpdated').innerText = currentCourse.updated_at;
+
+            document.getElementById('viewCoursePage').classList.add('hidden');
+            document.getElementById('editCourseForm').classList.remove('hidden');
+        }
+
+        // Create new course
+        function createCourse(event) {
+            event.preventDefault();
+            const name = document.getElementById('courseName').value;
+            const description = document.getElementById('courseDescription').value;
+            const instructor = document.getElementById('courseInstructor').value;
+            const newCourse = {
+                id: courses.length + 1,
+                name: name,
+                description: description,
+                instructor: instructor,
+                created_at: new Date().toISOString().split('T')[0],
+                updated_at: new Date().toISOString().split('T')[0]
+            };
+            courses.push(newCourse);
+            showCourseList();
+        }
+
+        // Update course
+        function updateCourse(event) {
+            event.preventDefault();
+            currentCourse.name = document.getElementById('editCourseName').value;
+            currentCourse.description = document.getElementById('editCourseDescription').value;
+            currentCourse.instructor = document.getElementById('editCourseInstructor').value;
+            currentCourse.updated_at = new Date().toISOString().split('T')[0];
+            showCourseList();
+        }
+
+        // Delete course
+        function deleteCourse() {
+            if (confirm('Are you sure you want to delete this course?')) {
+                courses = courses.filter(course => course.id !== currentCourse.id);
+                showCourseList();
             }
         }
 
-        
-        function previewImage(event) {
-            const preview = document.getElementById("profilePreview");
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block";
-                };
-                reader.readAsDataURL(file);
-            }
+        // Render course table
+        function renderCourseTable() {
+            const courseTable = document.getElementById('courseTable');
+            courseTable.innerHTML = '';
+            courses.forEach(course => {
+                courseTable.innerHTML += `
+                    <tr>
+                        <td>${course.id}</td>
+                        <td>${course.name}</td>
+                        <td>${course.instructor}</td>
+                        <td>${course.created_at}</td>
+                        <td>${course.updated_at}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm" onclick="viewCourse(${course.id})">View</button>
+                            <button class="btn btn-warning btn-sm" onclick="showEditForm()">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteCourse()">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
         }
 
-    
-        const form = document.getElementById("createAccountForm");
-        const submitButton = document.getElementById("submitButton");
-
-        form.addEventListener("input", function () {
-            const isValid = form.checkValidity();
-            submitButton.disabled = !isValid;
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function () {
+            showCourseList();
         });
     </script>
 </body>
+
 </html>
