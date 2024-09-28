@@ -1,238 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Management System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeo4DkcfM7HAtDmN9Q3zHnVE5g5CszM2p4JNiZOywwjD8oM" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home</title>
     <style>
-        .hidden {
-            display: none;
-        }
+      body {
+        font-family: Arial, sans-serif;
+      }
+      /* Style for tab links */
+      .tab {
+        display: flex;
+        background-color: #f1f1f1;
+      }
+      .tab a {
+        background-color: inherit;
+        text-decoration: none;
+        padding: 14px 16px;
+        transition: background-color 0.3s;
+        font-size: 17px;
+        color: black;
+      }
+      .tab a:hover {
+        background-color: #ddd;
+      }
+      .tab a.active {
+        background-color: #ccc;
+      }
     </style>
-</head>
+  </head>
+  <body>
+    <h1>Welcome</h1>
 
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Course Management System</h1>
-
-        <!-- Course List Page -->
-        <div id="courseList">
-            <h2>Courses</h2>
-            <button class="btn btn-primary mb-3" onclick="showCreateForm()">Create New Course</button>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Course ID</th>
-                        <th>Course Name</th>
-                        <th>Instructor</th>
-                        <th>Created At</th>
-                        <th>Last Updated</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="courseTable">
-                    <!-- Courses will be dynamically inserted here -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Create Course Page -->
-        <div id="createCourseForm" class="hidden">
-            <h2>Create New Course</h2>
-            <form onsubmit="createCourse(event)">
-                <div class="mb-3">
-                    <label for="courseName" class="form-label">Course Name*</label>
-                    <input type="text" class="form-control" id="courseName" maxlength="255" required>
-                </div>
-                <div class="mb-3">
-                    <label for="courseDescription" class="form-label">Course Description (optional)</label>
-                    <textarea class="form-control" id="courseDescription"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="courseInstructor" class="form-label">Instructor*</label>
-                    <select class="form-select" id="courseInstructor" required>
-                        <option value="" disabled selected>Select an instructor</option>
-                        <option value="Instructor 1">Instructor 1</option>
-                        <option value="Instructor 2">Instructor 2</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-success">Create Course</button>
-                <button type="button" class="btn btn-secondary" onclick="showCourseList()">Cancel</button>
-            </form>
-        </div>
-
-        <!-- View Course Page -->
-        <div id="viewCoursePage" class="hidden">
-            <h2>View Course</h2>
-            <p><strong>Course ID:</strong> <span id="viewCourseID"></span></p>
-            <p><strong>Course Name:</strong> <span id="viewCourseName"></span></p>
-            <p><strong>Course Description:</strong> <span id="viewCourseDescription"></span></p>
-            <p><strong>Instructor:</strong> <span id="viewCourseInstructor"></span></p>
-            <p><strong>Created At:</strong> <span id="viewCreatedAt"></span></p>
-            <p><strong>Last Updated:</strong> <span id="viewLastUpdated"></span></p>
-            <button class="btn btn-primary" onclick="showEditForm()">Edit Course</button>
-            <button class="btn btn-danger" onclick="deleteCourse()">Delete Course</button>
-            <button class="btn btn-secondary" onclick="showCourseList()">Back</button>
-        </div>
-
-        <!-- Edit Course Page -->
-        <div id="editCourseForm" class="hidden">
-            <h2>Edit Course</h2>
-            <form onsubmit="updateCourse(event)">
-                <p><strong>Course ID:</strong> <span id="editCourseID"></span></p>
-                <div class="mb-3">
-                    <label for="editCourseName" class="form-label">Course Name*</label>
-                    <input type="text" class="form-control" id="editCourseName" maxlength="255" required>
-                </div>
-                <div class="mb-3">
-                    <label for="editCourseDescription" class="form-label">Course Description (optional)</label>
-                    <textarea class="form-control" id="editCourseDescription"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="editCourseInstructor" class="form-label">Instructor*</label>
-                    <select class="form-select" id="editCourseInstructor" required>
-                        <option value="Instructor 1">Instructor 1</option>
-                        <option value="Instructor 2">Instructor 2</option>
-                    </select>
-                </div>
-                <p><strong>Created At:</strong> <span id="editCreatedAt"></span></p>
-                <p><strong>Last Updated:</strong> <span id="editLastUpdated"></span></p>
-                <button type="submit" class="btn btn-success">Update Course</button>
-                <button type="button" class="btn btn-secondary" onclick="showCourseList()">Cancel</button>
-            </form>
-        </div>
-
+    <!-- Tab navigation -->
+    <div class="tab">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="lab.html">Labs</a>
     </div>
 
-    <script>
-        let courses = [
-            {
-                id: 1,
-                name: 'Introduction to Programming',
-                description: 'Learn the basics of programming.',
-                instructor: 'Instructor 1',
-                created_at: '2023-01-01',
-                updated_at: '2023-01-05'
-            },
-            {
-                id: 2,
-                name: 'Advanced Mathematics',
-                description: 'Dive deep into calculus and algebra.',
-                instructor: 'Instructor 2',
-                created_at: '2023-01-10',
-                updated_at: '2023-01-12'
-            }
-        ];
-
-        let currentCourse = null;
-
-        // Show course list
-        function showCourseList() {
-            document.getElementById('courseList').classList.remove('hidden');
-            document.getElementById('createCourseForm').classList.add('hidden');
-            document.getElementById('viewCoursePage').classList.add('hidden');
-            document.getElementById('editCourseForm').classList.add('hidden');
-            renderCourseTable();
-        }
-
-        // Show create course form
-        function showCreateForm() {
-            document.getElementById('courseList').classList.add('hidden');
-            document.getElementById('createCourseForm').classList.remove('hidden');
-        }
-
-        // Show view course page
-        function viewCourse(id) {
-            currentCourse = courses.find(course => course.id === id);
-            document.getElementById('viewCourseID').innerText = currentCourse.id;
-            document.getElementById('viewCourseName').innerText = currentCourse.name;
-            document.getElementById('viewCourseDescription').innerText = currentCourse.description;
-            document.getElementById('viewCourseInstructor').innerText = currentCourse.instructor;
-            document.getElementById('viewCreatedAt').innerText = currentCourse.created_at;
-            document.getElementById('viewLastUpdated').innerText = currentCourse.updated_at;
-
-            document.getElementById('courseList').classList.add('hidden');
-            document.getElementById('viewCoursePage').classList.remove('hidden');
-        }
-
-        // Show edit course form
-        function showEditForm() {
-            document.getElementById('editCourseID').innerText = currentCourse.id;
-            document.getElementById('editCourseName').value = currentCourse.name;
-            document.getElementById('editCourseDescription').value = currentCourse.description;
-            document.getElementById('editCourseInstructor').value = currentCourse.instructor;
-            document.getElementById('editCreatedAt').innerText = currentCourse.created_at;
-            document.getElementById('editLastUpdated').innerText = currentCourse.updated_at;
-
-            document.getElementById('viewCoursePage').classList.add('hidden');
-            document.getElementById('editCourseForm').classList.remove('hidden');
-        }
-
-        // Create new course
-        function createCourse(event) {
-            event.preventDefault();
-            const name = document.getElementById('courseName').value;
-            const description = document.getElementById('courseDescription').value;
-            const instructor = document.getElementById('courseInstructor').value;
-            const newCourse = {
-                id: courses.length + 1,
-                name: name,
-                description: description,
-                instructor: instructor,
-                created_at: new Date().toISOString().split('T')[0],
-                updated_at: new Date().toISOString().split('T')[0]
-            };
-            courses.push(newCourse);
-            showCourseList();
-        }
-
-        // Update course
-        function updateCourse(event) {
-            event.preventDefault();
-            currentCourse.name = document.getElementById('editCourseName').value;
-            currentCourse.description = document.getElementById('editCourseDescription').value;
-            currentCourse.instructor = document.getElementById('editCourseInstructor').value;
-            currentCourse.updated_at = new Date().toISOString().split('T')[0];
-            showCourseList();
-        }
-
-        // Delete course
-        function deleteCourse() {
-            if (confirm('Are you sure you want to delete this course?')) {
-                courses = courses.filter(course => course.id !== currentCourse.id);
-                showCourseList();
-            }
-        }
-
-        // Render course table
-        function renderCourseTable() {
-            const courseTable = document.getElementById('courseTable');
-            courseTable.innerHTML = '';
-            courses.forEach(course => {
-                courseTable.innerHTML += `
-                    <tr>
-                        <td>${course.id}</td>
-                        <td>${course.name}</td>
-                        <td>${course.instructor}</td>
-                        <td>${course.created_at}</td>
-                        <td>${course.updated_at}</td>
-                        <td>
-                            <button class="btn btn-info btn-sm" onclick="viewCourse(${course.id})">View</button>
-                            <button class="btn btn-warning btn-sm" onclick="showEditForm()">Edit</button>
-                            <button class="btn btn-danger btn-sm" onclick="deleteCourse()">Delete</button>
-                        </td>
-                    </tr>
-                `;
-            });
-        }
-
-        // Initialize app
-        document.addEventListener('DOMContentLoaded', function () {
-            showCourseList();
-        });
-    </script>
-</body>
-
+    <!-- Content for the Home page -->
+    <div>
+      <h2>Home</h2>
+      <p>Welcome to the home page</p>
+    </div>
+  </body>
 </html>
