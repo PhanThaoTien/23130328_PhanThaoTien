@@ -1,0 +1,112 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fce4ec; /* Light pink background */
+  background-image: url("https://cdn.pixabay.com/photo/2017/03/27/14/39/water-2186574_1280.jpg"); /* Updated background image */
+  background-size: cover;
+  color: #333; /* Darker text color for better readability */
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  background-color: #e0f2f1; /* Light teal background */
+  padding: 12px; /* Slightly increased padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tab a {
+  color: white;
+  padding: 16px 24px; /* Increased padding for a bigger button feel */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tab a:hover {
+  background-color: #00796b; /* Darker teal on hover */
+  transform: scale(1.1);
+}
+
+.tab a.active {
+  background-color: #004d40; /* Darker teal for active tab */
+  font-weight: bold;
+}
+
+.wrapper {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Increased width for better fit */
+  max-width: 350px; /* Slightly increased max-width */
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.form-formgroup {
+  margin: 12px 0; /* Increased margin for spacing */
+}
+
+.forminput {
+  padding: 12px; /* Increased padding for inputs */
+  width: 220px;
+  border: 2px solid #009688; /* Lighter teal border */
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.forminput:focus {
+  border-color: #00796b; /* Slightly darker teal on focus */
+  outline: none;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff; /* White background for content */
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #d32f2f; /* Red for results */
+}
+
+.question {
+  margin: 10px 0;
+  background-color: #b2ebf2; /* Light cyan background for questions */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+button {
+  padding: 12px 24px; /* Increased button padding */
+  background-color: #009688; /* Teal button */
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00796b; /* Darker teal on button hover */
+}
+
+h1,
+h2,
+h3 {
+  color: #004d40; /* Dark green for headings */
+}
