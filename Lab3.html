@@ -1,160 +1,247 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chia Sẻ Tài Liệu Học Tập</title>
+    <title>Java Learning Hub</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef1f5;
         }
 
-        h1 {
-            text-align: center;
-            color: #f57e78;
-            margin-bottom: 30px;
-            background-color: #f6f0f0;
-            box-shadow: 0 4px 8px rgba(232, 95, 95, 0.1);
-        }
-
-        .subjects-container {
+        .container {
             display: flex;
-            justify-content: space-around;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #3c6382;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
             margin-bottom: 20px;
         }
 
-        .subject {
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #c8d6e5;
+        }
+
+        .content {
+            flex-grow: 1;
+            background-color: white;
+            padding: 30px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            color: #3c6382;
+            margin-bottom: 20px;
+        }
+
+        .lesson-content {
+            background-color: #eaf4f9;
+            padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            padding: 20px;
-            background-color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            flex: 1;
-            margin: 0 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
-        .subject:hover {
-            background-color: #ebcef3;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .lesson-content h2 {
+            font-size: 24px;
+            color: #3c6382;
         }
 
-        .subject h2 {
-            color: #cd3ee9;
-            margin: 0;
-            text-align: center;
+        .lesson-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        .hidden-content {
-            display: none;
-            margin-top: 15px;
+        .code-example {
+            background-color: #eef9f4;
             padding: 10px;
-            border: 1px solid #ea7bc1;
-            border-radius: 8px;
-            background-color: #f7f2f4;
+            border-left: 5px solid #3c6382;
+            margin-bottom: 20px;
+            font-family: monospace;
+            font-size: 14px;
         }
 
-        .toggle-section {
-            margin: 10px 0;
-        }
-
-        .toggle-section h3 {
-            cursor: pointer;
-            color: #4a0960;
-            margin: 5px 0;
-        }
-
-        .toggle-section p {
-            margin-left: 20px;
-        }
-
-        a {
+        .back-btn {
+            display: inline-block;
+            background-color: #3c6382;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             text-decoration: none;
-            color: #c767cc;
+            margin-top: 20px;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .back-btn:hover {
+            background-color: #60a3bc;
         }
+
+        /* Materials Section */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .material-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .material-card h3 {
+            font-size: 18px;
+            color: #3c6382;
+            margin-bottom: 10px;
+        }
+
+        .material-card button {
+            background-color: #3c6382;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .material-card button:hover {
+            background-color: #60a3bc;
+        }
+
+        .material-icon {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .material-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
     </style>
-    <script>
-        function toggleContent(subject) {
-            // Ẩn tất cả các nội dung
-            document.querySelectorAll('.hidden-content').forEach(content => {
-                content.style.display = 'none';
-            });
-
-            // Hiện nội dung của môn học được chọn
-            const contentToShow = document.getElementById(subject);
-            contentToShow.style.display = contentToShow.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
 </head>
 <body>
-    <h1>Chia Sẻ Tài Liệu Học Tập</h1>
 
-    <div class="subjects-container">
-        <div class="subject" onclick="toggleContent('toan-content')">
-            <h2>Môn Toán</h2>
-        </div>
-
-        <div class="subject" onclick="toggleContent('vatly-content')">
-            <h2>Môn Vật Lý</h2>
-        </div>
-
-        <div class="subject" onclick="toggleContent('hoahoc-content')">
-            <h2>Môn Hóa Học</h2>
-        </div>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Java Learning</h2>
+        <ul>
+            <li><a href="#">1. Introduction to Java</a></li>
+            <li><a href="#">2. Java Basics</a></li>
+            <li><a href="#">3. OOP in Java</a></li>
+            <li><a href="#">4. Advanced Java</a></li>
+            <li><a href="#">5. Java Frameworks</a></li>
+        </ul>
     </div>
 
-    <div id="toan-content" class="hidden-content">
-        <div class="toggle-section">
-            <h3>Bài Giảng</h3>
-            <p><a href="link_bai_giang_toan.pdf" target="_blank">Bài giảng Toán cơ bản</a></p>
-        </div>
-        <div class="toggle-section">
-            <h3>Bài Tập</h3>
-            <p><a href="link_bai_tap_toan.pdf" target="_blank">Bài tập Toán số học</a></p>
-        </div>
-        <div class="toggle-section">
-            <h3>Tài Liệu Tham Khảo</h3>
-            <p><a href="link_tai_lieu_toan.pdf" target="_blank">Tài liệu tham khảo Toán nâng cao</a></p>
-        </div>
-    </div>
+    <!-- Main Content -->
+    <div class="content">
+        <h1>1. Introduction to Java</h1>
+        <div class="lesson-content">
+            <h2>Java Overview</h2>
+            <p>
+                Java is a widely-used programming language designed for building robust, secure, and platform-independent applications. It follows the principle of "write once, run anywhere", making it a popular choice for developers.
+            </p>
 
-    <div id="vatly-content" class="hidden-content">
-        <div class="toggle-section">
-            <h3>Bài Giảng</h3>
-            <p><a href="link_bai_giang_vat_ly.pdf" target="_blank">Bài giảng Vật lý đại cương</a></p>
+            <h2>First Java Program Example</h2>
+            <p>Below is a basic "Hello, World!" example in Java:</p>
+            <div class="code-example">
+                <pre>
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java World!");
+    }
+}
+                </pre>
+            </div>
+            <p>This program prints "Hello, Java World!" to the console.</p>
         </div>
-        <div class="toggle-section">
-            <h3>Bài Tập</h3>
-            <p><a href="link_bai_tap_vat_ly.pdf" target="_blank">Bài tập Vật lý cơ học</a></p>
-        </div>
-        <div class="toggle-section">
-            <h3>Tài Liệu Tham Khảo</h3>
-            <p><a href="link_tai_lieu_vat_ly.pdf" target="_blank">Tài liệu tham khảo Vật lý nâng cao</a></p>
-        </div>
-    </div>
 
-    <div id="hoahoc-content" class="hidden-content">
-        <div class="toggle-section">
-            <h3>Bài Giảng</h3>
-            <p><a href="link_bai_giang_hoa_hoc.pdf" target="_blank">Bài giảng Hóa học đại cương</a></p>
-        </div>
-        <div class="toggle-section">
-            <h3>Bài Tập</h3>
-            <p><a href="link_bai_tap_hoa_hoc.pdf" target="_blank">Bài tập Hóa học hữu cơ</a></p>
-        </div>
-        <div class="toggle-section">
-            <h3>Tài Liệu Tham Khảo</h3>
-            <p><a href="link_tai_lieu_hoa_hoc.pdf" target="_blank">Tài liệu tham khảo Hóa học nâng cao</a></p>
+        <!-- Materials Section -->
+        <h2 style="color: #3c6382; text-align: center;">Available Materials</h2>
+        <div class="materials-grid">
+            <!-- Material 1 -->
+            <div class="material-card">
+                <div class="material-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Java_icon.png" alt="Java Icon">
+                </div>
+                <h3>Java Programming Language</h3>
+                <a href="java-programming.html">
+                    <button>View Materials</button>
+                </a>
+            </div>
+
+            <!-- Material 2 -->
+            <div class="material-card">
+                <div class="material-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Spring_Framework_Logo.png" alt="Spring Framework Icon">
+                </div>
+                <h3>Java Spring Framework</h3>
+                <a href="spring-framework.html">
+                    <button>View Materials</button>
+                </a>
+            </div>
+
+            <!-- Material 3 -->
+            <div class="material-card">
+                <div class="material-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-hibernate.png" alt="Hibernate Icon">
+                </div>
+                <h3>Hibernate ORM</h3>
+                <a href="hibernate.html">
+                    <button>View Materials</button>
+                </a>
+            </div>
+
+            <!-- Material 4 -->
+            <div class="material-card">
+                <div class="material-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Java_icon.png" alt="Java Icon">
+                </div>
+                <h3>Java Mock Project</h3>
+                <a href="java-mock-project.html">
+                    <button>View Materials</button>
+                </a>
+            </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>
+
+
+
+
