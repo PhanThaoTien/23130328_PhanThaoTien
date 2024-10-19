@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chia Sẻ Tài Liệu Học Tập</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #f57e78;
+            margin-bottom: 30px;
+            background-color: #f6f0f0;
+            box-shadow: 0 4px 8px rgba(232, 95, 95, 0.1);
+        }
+
+        .subjects-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .subject {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            flex: 1;
+            margin: 0 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject:hover {
+            background-color: #ebcef3;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject h2 {
+            color: #cd3ee9;
+            margin: 0;
+            text-align: center;
+        }
+
+        .hidden-content {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ea7bc1;
+            border-radius: 8px;
+            background-color: #f7f2f4;
+        }
+
+        .toggle-section {
+            margin: 10px 0;
+        }
+
+        .toggle-section h3 {
+            cursor: pointer;
+            color: #4a0960;
+            margin: 5px 0;
+        }
+
+        .toggle-section p {
+            margin-left: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #c767cc;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function toggleContent(subject) {
+            // Ẩn tất cả các nội dung
+            document.querySelectorAll('.hidden-content').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Hiện nội dung của môn học được chọn
+            const contentToShow = document.getElementById(subject);
+            contentToShow.style.display = contentToShow.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>Chia Sẻ Tài Liệu Học Tập</h1>
+
+    <div class="subjects-container">
+        <div class="subject" onclick="toggleContent('toan-content')">
+            <h2>Môn Toán</h2>
+        </div>
+
+        <div class="subject" onclick="toggleContent('vatly-content')">
+            <h2>Môn Vật Lý</h2>
+        </div>
+
+        <div class="subject" onclick="toggleContent('hoahoc-content')">
+            <h2>Môn Hóa Học</h2>
+        </div>
+    </div>
+
+    <div id="toan-content" class="hidden-content">
+        <div class="toggle-section">
+            <h3>Bài Giảng</h3>
+            <p><a href="link_bai_giang_toan.pdf" target="_blank">Bài giảng Toán cơ bản</a></p>
+        </div>
+        <div class="toggle-section">
+            <h3>Bài Tập</h3>
+            <p><a href="link_bai_tap_toan.pdf" target="_blank">Bài tập Toán số học</a></p>
+        </div>
+        <div class="toggle-section">
+            <h3>Tài Liệu Tham Khảo</h3>
+            <p><a href="link_tai_lieu_toan.pdf" target="_blank">Tài liệu tham khảo Toán nâng cao</a></p>
+        </div>
+    </div>
+
+    <div id="vatly-content" class="hidden-content">
+        <div class="toggle-section">
+            <h3>Bài Giảng</h3>
+            <p><a href="link_bai_giang_vat_ly.pdf" target="_blank">Bài giảng Vật lý đại cương</a></p>
+        </div>
+        <div class="toggle-section">
+            <h3>Bài Tập</h3>
+            <p><a href="link_bai_tap_vat_ly.pdf" target="_blank">Bài tập Vật lý cơ học</a></p>
+        </div>
+        <div class="toggle-section">
+            <h3>Tài Liệu Tham Khảo</h3>
+            <p><a href="link_tai_lieu_vat_ly.pdf" target="_blank">Tài liệu tham khảo Vật lý nâng cao</a></p>
+        </div>
+    </div>
+
+    <div id="hoahoc-content" class="hidden-content">
+        <div class="toggle-section">
+            <h3>Bài Giảng</h3>
+            <p><a href="link_bai_giang_hoa_hoc.pdf" target="_blank">Bài giảng Hóa học đại cương</a></p>
+        </div>
+        <div class="toggle-section">
+            <h3>Bài Tập</h3>
+            <p><a href="link_bai_tap_hoa_hoc.pdf" target="_blank">Bài tập Hóa học hữu cơ</a></p>
+        </div>
+        <div class="toggle-section">
+            <h3>Tài Liệu Tham Khảo</h3>
+            <p><a href="link_tai_lieu_hoa_hoc.pdf" target="_blank">Tài liệu tham khảo Hóa học nâng cao</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
