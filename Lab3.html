@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Learning Hub</title>
+    <title>Java Learning Hub with Materials</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -88,6 +88,35 @@
             font-size: 14px;
         }
 
+        .materials {
+            margin-bottom: 40px;
+        }
+
+        .materials h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #3c6382;
+        }
+
+        .materials ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .materials ul li {
+            margin-bottom: 10px;
+        }
+
+        .materials ul li a {
+            text-decoration: none;
+            color: #3c6382;
+            font-size: 16px;
+        }
+
+        .materials ul li a:hover {
+            text-decoration: underline;
+        }
+
         .back-btn {
             display: inline-block;
             background-color: #3c6382;
@@ -102,53 +131,6 @@
         .back-btn:hover {
             background-color: #60a3bc;
         }
-
-        /* Materials Section */
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .material-card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .material-card h3 {
-            font-size: 18px;
-            color: #3c6382;
-            margin-bottom: 10px;
-        }
-
-        .material-card button {
-            background-color: #3c6382;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .material-card button:hover {
-            background-color: #60a3bc;
-        }
-
-        .material-icon {
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .material-icon img {
-            width: 50px;
-            height: 50px;
-        }
-
     </style>
 </head>
 <body>
@@ -158,89 +140,194 @@
     <div class="sidebar">
         <h2>Java Learning</h2>
         <ul>
-            <li><a href="#">1. Introduction to Java</a></li>
-            <li><a href="#">2. Java Basics</a></li>
-            <li><a href="#">3. OOP in Java</a></li>
-            <li><a href="#">4. Advanced Java</a></li>
-            <li><a href="#">5. Java Frameworks</a></li>
+            <li><a href="#" onclick="loadLesson('intro')">1. Introduction to Java</a></li>
+            <li><a href="#" onclick="loadLesson('basics')">2. Java Basics</a></li>
+            <li><a href="#" onclick="loadLesson('oop')">3. OOP in Java</a></li>
+            <li><a href="#" onclick="loadLesson('advanced')">4. Advanced Java</a></li>
+            <li><a href="#" onclick="loadLesson('frameworks')">5. Java Frameworks</a></li>
         </ul>
     </div>
 
     <!-- Main Content -->
-    <div class="content">
-        <h1>1. Introduction to Java</h1>
-        <div class="lesson-content">
-            <h2>Java Overview</h2>
-            <p>
-                Java is a widely-used programming language designed for building robust, secure, and platform-independent applications. It follows the principle of "write once, run anywhere", making it a popular choice for developers.
-            </p>
+    <div class="content" id="content">
+        <h1>Welcome to Java Learning Hub</h1>
+        <p>Select a lesson from the sidebar to get started!</p>
+    </div>
+</div>
 
-            <h2>First Java Program Example</h2>
-            <p>Below is a basic "Hello, World!" example in Java:</p>
-            <div class="code-example">
-                <pre>
+<script>
+    function loadLesson(lesson) {
+        const content = document.getElementById('content');
+        switch (lesson) {
+            case 'intro':
+                content.innerHTML = `
+                    <h1>1. Introduction to Java</h1>
+                    <div class="lesson-content">
+                        <h2>Overview of Java</h2>
+                        <p>Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere" (WORA).</p>
+                        <h2>First Java Program</h2>
+                        <p>Here’s an example of a simple Java program that prints "Hello, Java World!":</p>
+                        <div class="code-example">
+                            <pre>
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, Java World!");
     }
 }
-                </pre>
-            </div>
-            <p>This program prints "Hello, Java World!" to the console.</p>
-        </div>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="materials">
+                        <h3>Available Materials</h3>
+                        <ul>
+                            <li><a href="#" onclick="viewMaterial('intro', 'lecture')">Lecture Notes</a></li>
+                            <li><a href="#" onclick="viewMaterial('intro', 'exercises')">Exercises</a></li>
+                            <li><a href="#" onclick="viewMaterial('intro', 'references')">References</a></li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'basics':
+                content.innerHTML = `
+                    <h1>2. Java Basics</h1>
+                    <div class="lesson-content">
+                        <h2>Data Types and Variables</h2>
+                        <p>In Java, variables must be declared before they are used. Java has several primitive data types, including:</p>
+                        <ul>
+                            <li><strong>int</strong> - for integers</li>
+                            <li><strong>double</strong> - for floating-point numbers</li>
+                            <li><strong>boolean</strong> - for true/false values</li>
+                            <li><strong>char</strong> - for single characters</li>
+                        </ul>
+                        <h2>Example: Declaring Variables</h2>
+                        <div class="code-example">
+                            <pre>
+public class Main {
+    public static void main(String[] args) {
+        int myNumber = 5;
+        double myDecimal = 4.5;
+        boolean isJavaFun = true;
+        char letter = 'A';
+        
+        System.out.println(myNumber);
+        System.out.println(myDecimal);
+        System.out.println(isJavaFun);
+        System.out.println(letter);
+    }
+}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="materials">
+                        <h3>Available Materials</h3>
+                        <ul>
+                            <li><a href="#" onclick="viewMaterial('basics', 'lecture')">Lecture Notes</a></li>
+                            <li><a href="#" onclick="viewMaterial('basics', 'exercises')">Exercises</a></li>
+                            <li><a href="#" onclick="viewMaterial('basics', 'references')">References</a></li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'oop':
+                content.innerHTML = `
+                    <h1>3. OOP in Java</h1>
+                    <div class="lesson-content">
+                        <h2>Object-Oriented Programming (OOP) Concepts</h2>
+                        <p>Java is an object-oriented language. The four fundamental concepts of OOP are:</p>
+                        <ul>
+                            <li><strong>Encapsulation</strong> - Bundling the data (variables) and methods (functions) that manipulate the data into a single unit, or class.</li>
+                            <li><strong>Inheritance</strong> - Allowing one class to inherit the properties and methods of another class.</li>
+                            <li><strong>Polymorphism</strong> - The ability to process objects differently depending on their data type or class.</li>
+                            <li><strong>Abstraction</strong> - Hiding the implementation details and showing only functionality to the user.</li>
+                        </ul>
+                        <h2>Example: Creating a Class in Java</h2>
+                        <div class="code-example">
+                            <pre>
+class Animal {
+    String name;
+    
+    Animal(String name) {
+        this.name = name;
+    }
+    
+    void speak() {
+        System.out.println("Animal " + name + " makes a sound");
+    }
+}
 
-        <!-- Materials Section -->
-        <h2 style="color: #3c6382; text-align: center;">Available Materials</h2>
-        <div class="materials-grid">
-            <!-- Material 1 -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Java_icon.png" alt="Java Icon">
-                </div>
-                <h3>Java Programming Language</h3>
-                <a href="java-programming.html">
-                    <button>View Materials</button>
-                </a>
-            </div>
+class Dog extends Animal {
+    Dog(String name) {
+        super(name);
+    }
+    
+    @Override
+    void speak() {
+        System.out.println("Dog " + name + " barks");
+    }
+}
 
-            <!-- Material 2 -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Spring_Framework_Logo.png" alt="Spring Framework Icon">
-                </div>
-                <h3>Java Spring Framework</h3>
-                <a href="spring-framework.html">
-                    <button>View Materials</button>
-                </a>
-            </div>
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog("Buddy");
+        myDog.speak();
+    }
+}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="materials">
+                        <h3>Available Materials</h3>
+                        <ul>
+                            <li><a href="#" onclick="viewMaterial('oop', 'lecture')">Lecture Notes</a></li>
+                            <li><a href="#" onclick="viewMaterial('oop', 'exercises')">Exercises</a></li>
+                            <li><a href="#" onclick="viewMaterial('oop', 'references')">References</a></li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            // Add more cases for 'advanced' and 'frameworks'
+            default:
+                content.innerHTML = '<h1>Welcome to Java Learning Hub</h1><p>Select a lesson from the sidebar to get started!</p>';
+        }
+    }
 
-            <!-- Material 3 -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-hibernate.png" alt="Hibernate Icon">
-                </div>
-                <h3>Hibernate ORM</h3>
-                <a href="hibernate.html">
-                    <button>View Materials</button>
-                </a>
-            </div>
+    function viewMaterial(lesson, type) {
+        const content = document.getElementById('content');
+        let materialTitle = '';
+        let materialContent = '';
 
-            <!-- Material 4 -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Java_icon.png" alt="Java Icon">
-                </div>
-                <h3>Java Mock Project</h3>
-                <a href="java-mock-project.html">
-                    <button>View Materials</button>
-                </a>
+        switch (type) {
+            case 'lecture':
+                materialTitle = 'Lecture Notes';
+                materialContent = '<p>Here are the lecture notes for ' + lesson + '.</p>';
+                break;
+            case 'exercises':
+                materialTitle = 'Exercises';
+                materialContent = '<p>Here are the exercises for ' + lesson + '.</p>';
+                break;
+            case 'references':
+                materialTitle = 'References';
+                materialContent = '<p>Here are the references for ' + lesson + '.</p>';
+                break;
+            default:
+                materialTitle = 'Materials';
+                materialContent = '<p>No materials available.</p>';
+        }
+
+        content.innerHTML = `
+            <h1>${materialTitle}</h1>
+            <div class="lesson-content">
+                ${materialContent}
             </div>
-        </div>
-    </div>
-</div>
+            <a href="#" class="back-btn" onclick="loadLesson('${lesson}')">Back to Lesson</a>
+        `;
+    }
+</script>
 
 </body>
 </html>
+
+
 
 
 
