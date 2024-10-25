@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuleSoft ESB Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7e6;
+            padding: 20px;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: #2e7d32;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #c5e1a5;
+        }
+        .top-nav .home-link {
+            font-size: 16px;
+            color: #2e7d32;
+        }
+        .top-nav button, .top-nav .dropdown {
+            padding: 8px 15px;
+            background-color: #e8f5e9;
+            border: 1px solid #c5e1a5;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #2e7d32;
+        }
+        .top-nav .dropdown {
+            position: relative;
+        }
+        .top-nav .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .top-nav .dropdown-content a {
+            display: block;
+            padding: 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+            color: #2e7d32;
+        }
+        .top-nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .video-section {
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #c5e1a5;
+            border-radius: 5px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            border-bottom: 1px solid #c5e1a5;
+        }
+        .tabs a {
+            padding: 10px 15px;
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid transparent;
+        }
+        .tabs a:hover {
+            border-bottom: 2px solid #2e7d32;
+            color: #2e7d32;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .ratings-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .ratings-info div {
+            font-size: 14px;
+        }
+        .ratings-info .rating {
+            color: #ff9900;
+        }
+        .progress-section {
+            margin-top: 20px;
+        }
+        .progress-bar {
+            background-color: #e8f5e9;
+            border: 1px solid #c5e1a5;
+            height: 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .progress-bar-fill {
+            background-color: #4caf50;
+            height: 100%;
+            border-radius: 5px;
+            width: 50%;
+        }
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .left-section {
+            flex: 2;
+            padding-right: 20px;
+            border-right: 1px solid #c5e1a5;
+        }
+        .right-section {
+            flex: 1;
+            padding-left: 20px;
+        }
+        .split-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .learn-column {
+            width: 48%;
+            font-size: 14px;
+        }
+        .last-updated {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .left-section {
+                padding-right: 0;
+                border-right: none;
+            }
+            .right-section {
+                padding-left: 0;
+            }
+            .split-content {
+                flex-direction: column;
+            }
+            .learn-column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="https://yourwebsite.com" class="home-link">Home</a>
+            <div>
+                <button>Leave a Rating</button>
+                <button>Your Progress</button>
+            </div>
+            <div>
+                <button>Share</button>
+                <div class="dropdown">
+                    <button>⋮</button>
+                    <div class="dropdown-content">
+                        <a href="#">Settings</a>
+                        <a href="#">Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-section">
+                <div class="video-section">
+                    <iframe src="https://www.youtube.com/embed/VCzjgQhORYk" allowfullscreen></iframe>
+
+                    <div class="tabs">
+                        <a href="#">Overview</a>
+                        <a href="#">Q&A</a>
+                        <a href="#">Notes</a>
+                        <a href="#">Announcements</a>
+                        <a href="#">Reviews</a>
+                        <a href="#">Learning Tools</a>
+                    </div>
+                </div>
+
+                <h1>MuleSoft ESB and Anypoint Platform Course</h1>
+
+                <div class="last-updated">
+                    Last updated November 2023 <br>
+                    English, English (Auto), French (Auto), 5 more
+                </div>
+
+                <div class="ratings-info">
+                    <div class="rating">⭐ 4.9</div>
+                    <div>32,654 students</div>
+                    <div>Total: 60.4 hours</div>
+                </div>
+
+                <div class="split-content">
+                    <div class="learn-column">
+                        <h2>What You'll Learn</h2>
+                        <ul>
+                            <li>Become an expert in Mule ESB and Anypoint Platform operations.</li>
+                            <li>Gain expertise in MUnit and DevOps with Mule.</li>
+                            <li>Understand Mule 4.x in depth and the SDLC phases.</li>
+                        </ul>
+                    </div>
+
+                    <div class="learn-column">
+                        <h2>&nbsp;</h2>
+                        <ul>
+                            <li>Engage in hands-on coding experience.</li>
+                            <li>Set up MuleSoft in your organization.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <h2>Course Content</h2>
+                <ul>
+                    <li><a href="#section1">Section 1: Introduction to MuleSoft</a></li>
+                    <li><a href="#section2">Section 2: DataWeave language - basics</a></li>
+                    <li><a href="#section3">Section 3: Mule database module</a></li>
+                    <li><a href="#section4">Section 4: Mule error handling</a></li>
+                    <li><a href="#section5">Section 5: MuleSoft API design and development</a></li>
+                    <li><a href="#section6">Section 6: MuleSoft CloudHub deployment</a></li>
+                    <li><a href="#section7">Section 7: Anypoint Platform management</a></li>
+                    <li><a href="#section8">Section 8: Advanced DataWeave techniques</a></li>
+                    <li><a href="#section9">Section 9: Real-time integration patterns</a></li>
+                    <li><a href="#section10">Section 10: Security in Mule applications</a></li>
+                    <li><a href="#section11">Section 11: Anypoint monitoring and analytics</a></li>
+                    <li><a href="#section12">Section 12: DevOps best practices with MuleSoft</a></li>
+                    <li><a href="#section13">Section 13: Preparing for MuleSoft certifications</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
