@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Goals</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Cài đặt chung */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f8fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Căn chỉnh chung */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        gap: 20px;
+      }
+
+      /* Cột bên trái */
+      .left-column {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      /* Tiêu đề */
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #4a5568;
+      }
+
+      /* Mục tiêu học tập */
+      .goal {
+        display: flex;
+        align-items: center;
+        border: 2px solid #ddd;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+      }
+
+      .goal:hover {
+        border-color: #6b46c1;
+      }
+
+      .goal-icon {
+        font-size: 24px;
+        margin-right: 15px;
+        color: #333;
+      }
+
+      .goal-content h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #2d3748;
+      }
+
+      .goal-content p {
+        margin: 5px 0 0;
+        color: #555;
+        font-size: 14px;
+      }
+
+      .enterprise-badge {
+        display: inline-block;
+        padding: 2px 6px;
+        background-color: #fff;
+        color: #6b46c1;
+        border: 1px solid #6b46c1;
+        border-radius: 5px;
+        font-size: 12px;
+        margin-left: 10px;
+      }
+
+      .goal-link {
+        color: #6b46c1;
+        font-size: 14px;
+        text-decoration: none;
+        margin-top: 10px;
+        display: inline-block;
+      }
+
+      /* Cột bên phải */
+      .right-column {
+        flex: 1;
+        min-width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .score-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2d3748;
+      }
+
+      .score {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+      }
+
+      .score-chart {
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .score-chart img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 10px;
+      }
+
+      .score-details {
+        font-size: 14px;
+        color: #555;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .answers-section {
+        margin-top: 20px;
+      }
+
+      .question {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f7f8fa;
+        transition: border-left 0.3s ease;
+      }
+
+      .question.correct {
+        border-left: 5px solid #48bb78;
+      }
+
+      .question.incorrect {
+        border-left: 5px solid #f56565;
+      }
+      canvas {
+        max-width: 600px;
+        margin: auto;
+      }
+    </style>
+    <script>
+      // Tạo thông báo khi nhấp vào các mục tiêu học tập
+      function showGoalDetails(goalTitle) {
+        alert("Chi tiết mục tiêu học tập: " + goalTitle);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Cột bên trái -->
+      <div class="left-column">
+        <div class="title">Learning focused on your goals</div>
+
+        <div class="goal" onclick="showGoalDetails('Hands-on training')">
+          <div class="goal-icon">🌟</div>
+          <div class="goal-content">
+            <h3>Hands-on training</h3>
+            <p>
+              Upskill effectively with AI-powered coding exercises, practice
+              tests, and quizzes.
+            </p>
+          </div>
+        </div>
+
+        <div class="goal" onclick="showGoalDetails('Certification prep')">
+          <div class="goal-icon">📜</div>
+          <div class="goal-content">
+            <h3>Certification prep</h3>
+            <p>
+              Prep for industry-recognized certifications by solving real-world
+              challenges and earning badges.
+            </p>
+          </div>
+        </div>
+
+        <div class="goal" onclick="showGoalDetails('Insights and analytics')">
+          <div class="goal-icon">📊</div>
+          <div class="goal-content">
+            <h3>
+              Insights and analytics
+              <span class="enterprise-badge">Enterprise Plan</span>
+            </h3>
+            <p>
+              Fast-track goals with advanced insights plus a dedicated customer
+              success team.
+            </p>
+            <a href="#" class="goal-link">Find out more →</a>
+          </div>
+        </div>
+
+        <div class="goal" onclick="showGoalDetails('Customizable content')">
+          <div class="goal-icon">⚙️</div>
+          <div class="goal-content">
+            <h3>
+              Customizable content
+              <span class="enterprise-badge">Enterprise Plan</span>
+            </h3>
+            <p>Create tailored learning paths for teams and organizations.</p>
+            <a href="#" class="goal-link">Find out more →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột bên phải -->
+      <div class="right-column">
+        <div class="score-title">
+          Your score: <span class="score">159</span>
+        </div>
+        <h2>Biểu đồ</h2>
+        <canvas id="lineChart"></canvas>
+        <div class="score-details">
+          Your performance was better than 88% of users who have completed this
+          assessment.
+        </div>
+
+        <div class="answers-section">
+          <div class="question correct">
+            <strong>Question 1</strong> - Correct<br />
+            Which of the following scenarios would benefit most from a managed
+            Kubernetes service?
+          </div>
+          <div class="question correct">
+            <strong>Question 2</strong> - Correct<br />
+            You containerized a web application. Which of the following
+            strategies is best to persist the data?
+          </div>
+          <div class="question incorrect">
+            <strong>Question 3</strong> - Incorrect<br />
+            What is the primary purpose of a CI/CD pipeline?
+          </div>
+          <!-- Thêm các câu hỏi khác nếu cần -->
+        </div>
+      </div>
+    </div>
+    <script>
+      const ctx = document.getElementById("lineChart").getContext("2d");
+      const lineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["1", "2", "3", "4", "5"],
+          datasets: [
+            {
+              label: "Doanh Thu",
+              data: [3600, 5200, 4700, 5900, 6400],
+              borderColor: "rgba(75, 192, 192, 1)",
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              fill: true,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
