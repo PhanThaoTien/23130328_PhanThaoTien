@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Layout</title>
+    <link rel="stylesheet" href="lab6req8.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            ⚙️ coderbyte
+        </div>
+        <nav class="nav">
+            <a href="#">For Developers</a>
+            <a href="#">For Organizations</a>
+            <a href="#">Go to Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <!-- Icon Section (Left) -->
+        <aside class="icon-section left">
+            <div class="icon-list">
+                <span class="icon-item">☁️ AWS</span>
+                <span class="icon-item">💻 GO</span>
+                <span class="icon-item">📱 Android</span>
+                <span class="icon-item">🌐 Node JS</span>
+                <span class="icon-item">🖼 Vue JS</span>
+                <span class="icon-item">🚀 Swift</span>
+                <span class="icon-item">🔁 Redux</span>
+            </div>
+        </aside>
+
+        <!-- Introduction Section -->
+        <section class="intro-section" id="intro-section">
+            <span class="tagline">FOR ORGANIZATIONS</span>
+            <h1>
+                <span class="highlight">Evaluate Candidates</span> Quickly,<br>
+                Affordably, and Accurately
+            </h1>
+            <p class="description">The #1 platform for technical assessments, interviews, and projects. Get unlimited candidates and admins on every plan.</p>
+            
+            <!-- Email Input Section -->
+            <div class="email-input" id="email-input">
+                <input type="email" placeholder="Work email address">
+                <div id="start-trial" onclick="toggleTrialMessage()">Start Trial</div>
+            </div>
+            
+            <div class="learn-more-section">
+                <a href="#" class="learn-more" onclick="toggleLearnMore()">Learn more</a>
+                <div id="learn-more-content" class="hidden">
+                    <p>Coderbyte offers a comprehensive platform for coding assessments, projects, and interviews. With a focus on real-world skills, you can ensure that candidates are ready for any technical challenge. Join organizations worldwide that trust Coderbyte for their hiring process.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Section (Right) -->
+        <aside class="icon-section right">
+            <div class="icon-list">
+                <span class="icon-item">🕸 GraphQL</span>
+                <span class="icon-item">📊 Jupyter</span>
+                <span class="icon-item">🔗 GIT</span>
+                <span class="icon-item">☁️ Azure</span>
+                <span class="icon-item">🐍 Python</span>
+                <span class="icon-item">🐘 PHP</span>
+                <span class="icon-item">💠 jQuery</span>
+            </div>
+        </aside>
+    </main>
+
+    <script src="lab6req8.js"></script>
+</body>
+</html>
+

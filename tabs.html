@@ -6,62 +6,96 @@
   <title>Labs</title>
   <style>
     /* Basic reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Page styling */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      
-      height: 100vh;
-      background-color: #EAE4DD;
-    }
+/* Page styling */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
 
-    /* Navbar styling */
-    .menu {
-      width: 100%;
-      background-color: #7469B6;
-      padding: 1em 0;
-      display: flex;
-      justify-content: center;
-      
-    }
+/* Navbar styling */
+.tabs-menu {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: #ffffff;
+  padding: 1rem;
+}
 
-    .menu a {
-      color: #E3FEF7;
-      padding: 0.3em 2.5em;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 2em;
-    }
+.tabs-menu button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    .menu a:hover {
-      background-color: #FFE4CF;
-    }
+.tabs-menu button.active {
+  background: #ff6600;
+}
+
+/* Styling for the lab links converted to buttons */
+.labs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem; /* Space between the buttons */
+  margin-top: 2rem;
+}
+
+.labs-container a {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  width: 150px; /* Set width for uniform button sizes */
+  transition: background-color 0.3s ease;
+}
+
+.labs-container a:hover {
+  background-color: #ff6600;
+}
+
+.labs-container a:active {
+  background-color: #cc5200;
+}
+
 </style>
 </head>
 <body>
     <div class="container">
-        <div class="menu">
-        <a href="index.html" class="home-link">Home</a>
-        <a href="about.html" class="about-link">About</a>
-        <a href="tabs.html" class="tabs-link">Tabs</a>
-        </div>
+      <div class="tabs-menu">
+        <button class="index-button" onclick="window.location.href='index.html'">Home</button>
+        <button class="tab-button" onclick="window.location.href='about.html'">About</button>
+        <button class="tab-button" onclick="window.location.href='tabs.html'">Tabs</button>
+    
+    </div>
     <div class="content">
         <h2>Tabs</h2>
         <div class="labs-container">
             <a href="Lab1.html">Lab1</a>
             <a href="Lab2.html">Lab2</a>
-            <a href="Lab3.html">Lab3</a>
+            <a href="lab3.html">lab3</a>
             <a href="lab4.html">lab4</a>
             <a href="lab5.html">lab5</a>
-            <a href="Lab6.html">Lab6</a>
+            <a href="lab6req56.html">lab6req5,6</a>
+            <a href="lab6req7.html">lab6req7</a>
+            <a href="lab6req8.html">lab6req8</a>
         </div>
     </div>
     </div>

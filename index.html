@@ -1,68 +1,482 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang Chủ</title>
-  <style>
-    /* Basic reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThtieTravel - Discover Vietnam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-    /* Page styling */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      
-      height: 100vh;
-      background-color: #EAE4DD;
-    }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* Navbar styling */
-    .menu {
-      width: 100%;
-      background-color: #7469B6;
-      padding: 1em 0;
-      display: flex;
-      justify-content: center;
-      
-    }
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-    .menu a {
-      color: #E3FEF7;
-      padding: 0.3em 2.5em;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 2em;
-    }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
 
-    .menu a:hover {
-      background-color: #FFE4CF;
-    }
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
 
-    /* Centered welcome message */
-    h1 {
-      color: #4379F2;
-      font-size: 3em;
-      margin-top: 3em;
-      justify-content: center;
-    }
-  </style>
+        .tab {
+            display: none;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        footer .contact-info {
+            margin-top: 1rem;
+        }
+
+        footer .socials a {
+            color: #fff;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .tabs-menu {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            background: #f0f0f0;
+            padding: 1rem;
+        }
+
+        .tabs-menu button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tabs-menu button.active {
+            background: #ff6600;
+        }
+
+        /* New Styling */
+        .price-table {
+            margin-top: 2rem;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .price-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .price-table th {
+            background-color: #f0f0f0;
+        }
+
+
+
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6600;
+            text-align: center;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
-<body>
-  <div class="menu">
-        <a href="index.html" class="home-link">Home</a>
-        <a href="about.html" class="about-link">About</a>
-        <a href="tabs.html" class="tabs-link">Tabs</a>
-      </div>
 
-  <!-- Welcome Message -->
-  <h1>Chào mừng đến với Trang Chủ!</h1>
- 
+<body>
+    <header>
+        <div class="logo">ThtieTravel</div>
+    </header>
+
+    <div class="tabs-menu">
+        <button class="tab-button" data-tab="about">About Us</button>
+        <button class="tab-button" data-tab="destinations">Destinations</button>
+        <button class="tab-button" data-tab="booking">Book Now</button>
+        <button class="tab-button" data-tab="contact">Contact</button>
+        <button class="tab-button" onclick="window.location.href='about.html'">About</button>
+        <button class="tab-button" onclick="window.location.href='tabs.html'">Tabs</button>
+        <button class="tab-button" onclick="window.location.href='result.html'">Result</button>
+    </div>
+
+    <div id="about" class="tab active">
+        <h2>About Us</h2>
+        <p>Welcome to ThtieTravel, your trusted partner for exploring the wonders of Vietnam. From scenic highlands to
+            vibrant cities, we help you create unforgettable memories.</p>
+    </div>
+
+    <div id="destinations" class="tab">
+        <h2>Popular Destinations</h2>
+        <h3>Da Lat - City of Eternal Spring</h3>
+        <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/dia-diem-du-lich-da-lat-1.jpg" alt="Da Lat - City of Eternal Spring" width="100%" height="auto">
+           
+        <p>
+
+            Da Lat, located in the Central Highlands of Vietnam, is a charming city known for its cool climate, stunning
+            natural landscapes, and vibrant flower gardens. Often referred to as the "City of Eternal Spring," Da Lat
+            attracts
+            visitors with its year-round mild weather, making it an ideal destination for relaxation and exploration.
+
+            The city is surrounded by rolling hills, lush pine forests, and sparkling lakes. Some of the must-visit
+            attractions include Xuan Huong Lake, Langbiang Mountain, and Datanla Waterfall. For those who love flowers,
+            the Da
+            Lat Flower Garden is a colorful paradise with a variety of blooms.
+
+            Da Lat is also famous for its French colonial architecture, including the iconic Da Lat Railway Station and
+            Bao
+            Dai's Summer Palace. Visitors can stroll through the city to admire the unique blend of traditional and
+            European-inspired designs.
+
+            The food scene in Da Lat is equally appealing, with local specialties such as grilled rice paper (banh trang
+            nuong), avocado ice cream, and hot soy milk sold at night markets.
+
+            Whether you’re an adventure seeker, a nature lover, or someone looking for a peaceful retreat, Da Lat offers
+            something for everyone.
+        </p>
+
+        <h3>Sapa - Terraced Rice Fields</h3>
+        <img src="https://cdn3.ivivu.com/2023/02/T%E1%BB%95ng-quan-du-l%E1%BB%8Bch-Sapa-ivivu.jpg" alt="Da Lat - City of Eternal Spring" width="100%" height="auto">
+        <p>
+
+
+            Sapa, a picturesque town in northern Vietnam, is a dream destination for nature enthusiasts and cultural
+            explorers. Nestled in the Hoang Lien Son Mountains, Sapa is renowned for its breathtaking terraced rice
+            fields,
+            majestic mountain ranges, and vibrant ethnic cultures.
+
+            The most iconic sight in Sapa is the Muong Hoa Valley, where terraced rice fields stretch endlessly along
+            the
+            hillsides, creating a mesmerizing view, especially during the harvest season. Fansipan Mountain, known as
+            the
+            "Roof of Indochina," offers an unforgettable adventure for trekkers and stunning panoramic views from the
+            summit.
+
+            Sapa is also home to many ethnic minority groups, such as the Hmong, Dao, and Tay people. Visiting local
+            villages
+            like Cat Cat, Ta Van, or Lao Chai provides travelers with the chance to experience traditional customs,
+            colorful
+            markets, and unique handicrafts.
+
+            The cool, misty climate adds to Sapa’s charm, making it a perfect retreat for those seeking tranquility.
+            Don’t
+            forget to try local delicacies like grilled meat skewers, “thang co” (a traditional hotpot), or herbal bath
+            experiences that help rejuvenate both body and mind.
+
+            Whether you’re exploring the rugged landscapes or connecting with the rich cultural heritage, Sapa promises
+            a
+            memorable journey for all.
+        </p>
+
+        <h3>Hue - Imperial City</h3>
+        <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2024/5/1/dai-noi-hue-1714564881807649774299.jpg" alt="Da Lat - City of Eternal Spring" width="100%" height="auto">
+        <p>
+
+
+            Hue, located in central Vietnam, is a city rich in history, culture, and stunning architecture. Once the
+            capital
+            of Vietnam under the Nguyen Dynasty, Hue is home to impressive historical sites, including the Imperial
+            City,
+            which is a UNESCO World Heritage Site. The city offers a unique glimpse into Vietnam's royal past, with its
+            ancient palaces, temples, and ornate tombs.
+
+            The **Imperial City (The Citadel)** is the heart of Hue’s cultural heritage, where visitors can explore the
+            ruins
+            of royal palaces, gardens, and the Forbidden Purple City. Nearby, the **Tombs of the Emperors**—such as the
+            tombs
+            of Emperor Tu Duc and Emperor Minh Mang—are grand and beautifully set amidst scenic landscapes.
+
+            One of Hue’s highlights is its **delicious cuisine**, known for its sophisticated flavors and unique dishes.
+            Specialties include **bun bo Hue** (a spicy beef noodle soup), **com hen** (rice with baby clams), and
+            **banh
+            khoai** (Hue-style pancakes). Street food and local markets, such as the Dong Ba Market, are perfect for
+            sampling
+            these delicacies.
+
+            The city is also famous for its **traditional music**—known as **Ca Hue**—and **festivals**, such as the Hue
+            Festival, which celebrates the city’s history and culture through performances, parades, and traditional
+            art.
+
+            With its tranquil rivers, historic landmarks, and delicious food, Hue is a must-visit destination for those
+            looking to experience the rich cultural and historical tapestry of Vietnam.
+        </p>
+
+        <h3>Da Nang - Coastal Charm</h3>
+        <img src="https://cdnmedia.baotintuc.vn/Upload/DmtgOUlHWBO5POIHzIwr1A/files/2022/02/24/cau-vang-24022022.jpg" alt="Da Lat - City of Eternal Spring" width="100%" height="auto">
+        <p>
+
+            Da Nang, a vibrant coastal city in central Vietnam, is a popular destination for its beautiful beaches,
+            modern
+            infrastructure, and rich cultural heritage. Located between the ancient town of Hoi An and the imperial city
+            of
+            Hue, Da Nang is a perfect base for exploring central Vietnam's best attractions.
+
+            The city is famous for its stunning **beaches**, such as **My Khe Beach** and **Non Nuoc Beach**, which
+            offer soft
+            golden sands and clear blue waters, making it ideal for swimming, sunbathing, and water sports. For those
+            who
+            enjoy scenic views, **Son Tra Peninsula** provides a perfect spot to admire the coastline and visit the
+            **Lady
+            Buddha statue** at the Linh Ung Pagoda.
+
+            Da Nang also boasts impressive landmarks like the **Marble Mountains**, a complex of limestone hills with
+            caves,
+            pagodas, and panoramic views. Another iconic site is the **Golden Bridge** at Ba Na Hills, a striking
+            pedestrian
+            bridge held up by giant stone hands, offering stunning views of the surrounding mountains and forest.
+
+            For culture enthusiasts, Da Nang has the **Cham Museum**, which houses a vast collection of Cham
+            civilization
+            artifacts, and the **Han River Bridge**, a unique rotating bridge that lights up beautifully at night.
+
+            The city’s food scene is also a major draw, with local dishes like **mi quang** (a flavorful noodle dish),
+            **banh
+            xeo** (Vietnamese pancakes), and fresh seafood served at markets and local eateries.
+
+            Whether you’re seeking relaxation on the beach, adventure in the mountains, or cultural exploration, Da Nang
+            offers a perfect blend of natural beauty and modern charm.
+        </p>
+
+        <!-- Đà Lạt -->
+        <h3>Da Lat - City of Eternal Spring</h3>
+
+        <div class="price-table">
+            <h4>Price for Da Lat</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Duration</th>
+                        <th>Price (per person)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 Day</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>3 Days</td>
+                        <td>$130</td>
+                    </tr>
+                    <tr>
+                        <td>5 Days</td>
+                        <td>$200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sapa -->
+        <h3>Sapa - The Highland Beauty</h3>
+
+        <div class="price-table">
+            <h4>Price for Sapa</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Duration</th>
+                        <th>Price (per person)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 Day</td>
+                        <td>$60</td>
+                    </tr>
+                    <tr>
+                        <td>3 Days</td>
+                        <td>$150</td>
+                    </tr>
+                    <tr>
+                        <td>5 Days</td>
+                        <td>$220</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Huế -->
+        <h3>Hue - The Ancient Capital</h3>
+
+        <div class="price-table">
+            <h4>Price for Hue</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Duration</th>
+                        <th>Price (per person)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 Day</td>
+                        <td>$45</td>
+                    </tr>
+                    <tr>
+                        <td>3 Days</td>
+                        <td>$120</td>
+                    </tr>
+                    <tr>
+                        <td>5 Days</td>
+                        <td>$180</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Đà Nẵng -->
+        <h3>Da Nang - Beach and Culture</h3>
+
+        <div class="price-table">
+            <h4>Price for Da Nang</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Duration</th>
+                        <th>Price (per person)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 Day</td>
+                        <td>$55</td>
+                    </tr>
+                    <tr>
+                        <td>3 Days</td>
+                        <td>$140</td>
+                    </tr>
+                    <tr>
+                        <td>5 Days</td>
+                        <td>$210</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <div class="countdown" id="countdown">Booking ends in: </div>
+    </div>
+
+    <div id="booking" class="tab">
+        <h2>Book Your Adventure</h2>
+        <form>
+            <label for="destination">Select Destination:</label>
+            <select id="destination" name="destination">
+                <option value="dalat">Da Lat</option>
+                <option value="sapa">Sapa</option>
+                <option value="hue">Hue</option>
+                <option value="danang">Da Nang</option>
+            </select>
+
+            <label for="checkin">Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin">
+
+            <label for="checkout">Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout">
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <div id="contact" class="tab">
+        <h2>Contact Us</h2>
+        <p>Email: support@ttphantravel.com</p>
+        <p>Phone: +84 123 456 789</p>
+        <p>Address: 123 Travel Street, Bentre, Vietnam</p>
+    </div>
+
+    <footer>
+        <div class="contact-info">
+            <p>&copy; 2024 ThtieTravel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const buttons = document.querySelectorAll('.tab-button');
+        const tabs = document.querySelectorAll('.tab');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and tabs
+                buttons.forEach(btn => btn.classList.remove('active'));
+                tabs.forEach(tab => tab.classList.remove('active'));
+
+                // Add active class to the clicked button and corresponding tab
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).classList.add('active');
+            });
+        });
+
+
+
+        // Countdown timer
+        const countdownElement = document.getElementById('countdown');
+        let countdownDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000); // 30 days countdown
+
+        function updateCountdown() {
+            let now = new Date().getTime();
+            let distance = countdownDate - now;
+
+            if (distance <= 0) {
+                countdownElement.innerHTML = "Booking ended!";
+                clearInterval(countdownInterval);
+            } else {
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `Booking ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
