@@ -125,6 +125,32 @@
             text-align: center;
             margin-top: 2rem;
         }
+
+        .tabs-menu {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            position: fixed; /* Cố định ở đầu trang */
+            top: 0; /* Căn trên cùng */
+            left: 0;
+            z-index: 1000; /* Đảm bảo menu nằm trên các phần khác */
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .tab-button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .tab-button:hover {
+            background-color: #575757;
+        }
     </style>
 </head>
 
@@ -426,7 +452,7 @@
 
     <div id="contact" class="tab">
         <h2>Contact Us</h2>
-        <p>Email: support@ttphantravel.com</p>
+        <p>Email: support@thtietravel.com</p>
         <p>Phone: +84 123 456 789</p>
         <p>Address: 123 Travel Street, Bentre, Vietnam</p>
     </div>

@@ -131,6 +131,18 @@
         .back-btn:hover {
             background-color: #60a3bc;
         }
+        .back-button {
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #575757;
+        }
     </style>
 </head>
 <body>
@@ -322,6 +334,10 @@ public class Main {
             <a href="#" class="back-btn" onclick="loadLesson('${lesson}')">Back to Lesson</a>
         `;
     }
+    function goToPage() {
+            window.location.href = 'tabs.html'; // Thay 'index.html' bằng URL trang bạn muốn quay về
+        }
+    
 </script>
 
 </body>

@@ -19,3 +19,6 @@ function toggleLearnMore() {
 
     learnMoreContent.classList.toggle("hidden");
 }
+function goToPage() {
+    window.location.href = 'tabs.html'; // Thay 'index.html' bằng URL trang bạn muốn quay về
+}

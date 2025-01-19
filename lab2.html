@@ -101,6 +101,18 @@
     .question input[type="radio"] {
       margin-right: 10px;
     }
+    .back-button {
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #575757;
+        }
   </style>
   
 </head>
@@ -255,7 +267,14 @@
       });
       document.getElementById('score').innerText = `Điểm của bạn: ${score} / ${currentQuestions.length}`;
     }
+    <button class="back-button" onclick="goToPage()">Back</button>
+
+  
+        function goToPage() {
+            window.location.href = 'tabs.html'; // Thay 'index.html' bằng URL trang bạn muốn quay về
+        }
   </script>
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
